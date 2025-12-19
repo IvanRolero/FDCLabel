@@ -1,0 +1,90 @@
+{
+  "page": {
+    "size": "A4",
+    "orientation": "Portrait"
+  },
+  
+    "barcodes": [
+    {
+      "type": "code128",
+      "x": 50,
+      "y": 150,
+      "width": 500,
+      "height": 160,
+      "text": "$tracknumber"
+    }
+    ],
+    
+    "fonts": {
+    "default":"Verdana",
+    "custom_fonts": [
+      {
+        "name": "Verdana",
+        "file": "Verdana.ttf"
+      }
+    ]
+  },
+  
+  "fields": [
+  { "x_start": 40, "x_end": 45, "y_start": 660, "y_end": 665, "text": "To:", "font_size": 30, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 650, "y_end": 655, "text": "$toname", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 630, "y_end": 635, "text": "$tostreetnumber", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 610, "y_end": 615, "text": "$toappartment", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 590, "y_end": 595, "text": "$toplace", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 40, "x_end": 45, "y_start": 540, "y_end": 545, "text": "Fróm:", "font_size": 30, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 530, "y_end": 535, "text": "$fromname", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 510, "y_end": 515, "text": "$fromStreetnumber", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 490, "y_end": 495, "text": "$fromappartment", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 470, "y_end":475, "text": "$fromplace", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 40, "x_end": 45, "y_start": 420, "y_end":425, "text": "orderid", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 40, "x_end": 45, "y_start": 400, "y_end": 405, "text": "weight", "font_size": 20, "wrap": 0, "align": "left", "max_length": 100 },
+  { "x_start": 40, "x_end": 45, "y_start": 380, "y_end": 385, "text": "remarks", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 320, "x_end": 330, "y_start": 420, "y_end": 425, "text": "dimensions", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 320, "x_end": 330, "y_start": 400, "y_end": 405, "text": "date", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 140, "x_end": 145, "y_start": 420, "y_end":425, "text": "$orderid", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 140, "x_end": 145, "y_start": 400, "y_end": 405, "text": "$weight", "font_size": 20, "wrap": 0, "align": "left", "max_length": 100 },
+  { "x_start": 140, "x_end": 145, "y_start": 380, "y_end": 385, "text": "$remarks", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 440, "x_end": 450, "y_start": 420, "y_end": 425, "text": "$dimensions", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 440, "x_end": 450, "y_start": 400, "y_end": 405, "text": "$date", "font_size": 20, "wrap": 0, "align": "left" },
+  { "x_start": 150, "x_end": 160, "y_start": 140, "y_end": 145, "text": "$tracknumber", "font_size": 26, "wrap": 0, "align": "left" }
+  ],
+  "lines": [
+    {
+      "type": "raw",
+      "x_start": 10,
+      "y_start": 700,
+      "x_end": 585,
+      "y_end": 700,
+      "width": 6
+    },
+    {
+      "type": "raw",
+      "x_start": 7,
+      "y_start": 100,
+      "x_end": 588,
+      "y_end": 100,
+      "width": 6
+    },
+    {
+      "type": "raw",
+      "x_start": 10,
+      "y_start": 703,
+      "x_end": 10,
+      "y_end": 100,
+      "width": 6
+    },
+    {
+      "type": "raw",
+      "x_start": 585,
+      "y_start": 703,
+      "x_end": 585,
+      "y_end": 100,
+      "width": 6
+    },
+    {"type": "horizontal_transform","y": 550,"x_start": 10,"x_end": 585, "width": 5 },
+    {"type": "horizontal_transform","y": 430,"x_start": 10,"x_end": 585, "width": 5 },
+    {"type": "horizontal_transform","y": 350,"x_start": 10,"x_end": 585, "width": 5 }
+   
+  ]
+
+}
