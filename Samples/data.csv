@@ -1,3 +1,3 @@
 toname,tostreetnumber,toappartment,toplace,fromname,fromStreetnumber,fromappartment,fromplace,orderid,weight,remarks,dimensions,date,tracknumber
 john doe235, evergreen,5C,"Miami, 20001 USA",jane doe,$325 evergreen,7C,Miami 20001 USA 23456,ab123,10.5kg,fragile,20x50x70,01/01/2050,ebc12345id
-john doe,236 evergreen campeón,5C,Miami 20001 USA,jane doe,326 evergreen,7C,Miami 20001 USA 23457,ab123,10.5kg,fragile,20x50x71,02/01/2050,ebc12345id
+john doe,236 evergreen campeÃ³n,5C,Miami 20001 USA,jane doe,326 evergreen,7C,Miami 20001 USA 23457,ab123,10.5kg,fragile,20x50x71,02/01/2050,ebc12345id
