@@ -31,7 +31,7 @@
   { "x_start": 150, "x_end": 160, "y_start": 630, "y_end": 635, "text": "$tostreetnumber", "font_size": 20, "wrap": 0, "align": "left" },
   { "x_start": 150, "x_end": 160, "y_start": 610, "y_end": 615, "text": "$toappartment", "font_size": 20, "wrap": 0, "align": "left" },
   { "x_start": 150, "x_end": 160, "y_start": 590, "y_end": 595, "text": "$toplace", "font_size": 20, "wrap": 0, "align": "left" },
-  { "x_start": 40, "x_end": 45, "y_start": 540, "y_end": 545, "text": "Fróm:", "font_size": 30, "wrap": 0, "align": "left" },
+  { "x_start": 40, "x_end": 45, "y_start": 540, "y_end": 545, "text": "FrÃ³m:", "font_size": 30, "wrap": 0, "align": "left" },
   { "x_start": 150, "x_end": 160, "y_start": 530, "y_end": 535, "text": "$fromname", "font_size": 20, "wrap": 0, "align": "left" },
   { "x_start": 150, "x_end": 160, "y_start": 510, "y_end": 515, "text": "$fromStreetnumber", "font_size": 20, "wrap": 0, "align": "left" },
   { "x_start": 150, "x_end": 160, "y_start": 490, "y_end": 495, "text": "$fromappartment", "font_size": 20, "wrap": 0, "align": "left" },
