@@ -15,7 +15,7 @@ Options:
   -v, --version         Show version information
   -h, --help            Show this help message
 
-## Examples:
+# Examples:
   FDCLabel.exe data.csv                      Use defaults
   FDCLabel.exe data.csv -c config1.json      Custom config
   FDCLabel.exe data.csv -o output.pdf -r 5   Specific output and row
@@ -23,7 +23,7 @@ Options:
   FDCLabel.exe -c shipping.json shipping.csv # Generate PDF from shipping.json configuration file and shipping.csv information file
 
 
-## CSV File Format Structure
+# CSV File Format Structure
 
 First row must contain field names (headers)
 Supports quoted fields with "" for escaping quotes
