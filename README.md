@@ -8,36 +8,52 @@ Required:
   csv_file              Path to CSV data file
 
 Options:
-  -c, --config FILE     JSON configuration file (default: config.json)
+
+-c, --config FILE     JSON configuration file (default: config.json)
+
   -o, --output FILE     Output PDF filename (default: labels.pdf)
+	
   -r, --row INDEX       Process specific row only (default: all rows)
+	
   --validate            Validate configuration without generating PDF
+	
   -v, --version         Show version information
-  -h, --help            Show this help message
+	
+  -h, --help            Show this message
 
 # Examples:
-  FDCLabel.exe data.csv                      Use defaults
-  FDCLabel.exe data.csv -c config1.json      Custom config
-  FDCLabel.exe data.csv -o output.pdf -r 5   Specific output and row
-  FDCLabel.exe data.csv --validate           Validate config only
-  FDCLabel.exe -c shipping.json shipping.csv # Generate PDF from shipping.json configuration file and shipping.csv information file
+
+  FDCLabel.exe data.csv                      (Use defaults)
+	
+  FDCLabel.exe data.csv -c config1.json      (Custom config)
+	
+  FDCLabel.exe data.csv -o output.pdf -r 5   (Specific output and row)
+	
+  FDCLabel.exe data.csv --validate           (Validate config only)
+	
+  FDCLabel.exe -c shipping.json shipping.csv  (Generate PDF from shipping.json configuration file and shipping.csv information file)
+	
 
 
 # CSV File Format Structure
 
 First row must contain field names (headers)
+
 Supports quoted fields with "" for escaping quotes
-Maximum: 256 fields, 100,000 rows
+
+Maximum: 256 fields, 100000 rows
+
 Maximum line length: 8192 characters
 
-##Sample CSV
+
+## Sample CSV
 Product,SKU,Price,Description
+
 "Widget A","ABC-123",19.99,"Premium quality widget"
+
 "Widget B","DEF-456",29.99,"Deluxe version with extras"
 
-
-
-## Sample JSON
+# Sample JSON
 
 {
     "page": {
@@ -62,7 +78,7 @@ Product,SKU,Price,Description
 }
 
 
-Page Configuration values
+# Page Configuration values
 
 Property	Values	Default
 size:	"A3", "A4", "A5", "LETTER", "LEGAL"	"A4"
@@ -101,7 +117,7 @@ Custom Fonts:
 ]
 
 
-##Field Configuration
+## Field Configuration
 
 x_start, x_end (coordinates Positive number in dots)
 y_start, y_end (coordinates Positive number in dots)
@@ -141,7 +157,7 @@ CSV file Sample
 Product,price
 anchor,$125
 
-Line Configuration
+## Line Configuration
 
 Line Types:
 
@@ -168,7 +184,8 @@ json
     }
 ]
 
-##QR Code Configuration
+## QR Code Configuration
+
 Property	Required	Description	Default
 x, y	No	Position in dots	192.0, 1.0
 size	No	Size in dots	113.4
@@ -187,7 +204,7 @@ json
 }
 
 
-Barcode Configuration
+## Barcode Configuration
 
 Supported types: "code128", "ean13", "upca"
 
@@ -232,9 +249,7 @@ Missing required fields: Warns about missing coordinates
 Font file not found: Warning during validation
     
     
-Troubleshooting
-
-Problem	Solution
+## Troubleshooting
 
 Fonts not displaying:	Check font file paths, use absolute paths
 Text overflowing:	Enable wrap or reduce font_size
