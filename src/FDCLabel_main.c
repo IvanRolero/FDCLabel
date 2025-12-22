@@ -303,9 +303,8 @@ int main(int argc, char **argv) {
         // Draw QR code only if enabled and has text
         if (qr_code.enabled && strlen(qr_code.text) > 0) {
             draw_qr_code(page, qr_code.x, qr_code.y, qr_code.size, qr_code.text);
-        }
-        
-        // === ADD BARCODE SUPPORT HERE ===
+        }       
+
         BarcodeEntry *barcodes = NULL;
         int barcode_count = 0;
         if (load_barcodes_from_json(root, &barcodes, &barcode_count, hex_code, csv, row_index) == 0) {
@@ -314,7 +313,7 @@ int main(int argc, char **argv) {
             }
             free(barcodes);
         }
-        // === END BARCODE SUPPORT ===
+
 
         for (int i = 0; i < field_count; ++i) {
             float fx0 = fields[i].x_start;
