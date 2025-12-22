@@ -14,16 +14,7 @@
       "text": "$tracknumber"
     }
     ],
-    
-    "fonts": {
-    "default":"Verdana",
-    "custom_fonts": [
-      {
-        "name": "Verdana",
-        "file": "Verdana.ttf"
-      }
-    ]
-  },
+
   
   "fields": [
   { "x_start": 40, "x_end": 45, "y_start": 660, "y_end": 665, "text": "To:", "font_size": 30, "wrap": 0, "align": "left" },
