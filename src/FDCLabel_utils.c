@@ -71,7 +71,7 @@ void error_handler(HPDF_STATUS error_no, HPDF_STATUS detail_no, void *user_data)
     (void)user_data;
     fprintf(stderr, "PDF Error: error_no=%04X, detail_no=%d\n", (unsigned int)error_no, (int)detail_no);
 }
-
+//Remove or modify random number generator here
 void generate_hex_code(char *hex, int length) {
     if (!hex || length <= 0) return;
     
