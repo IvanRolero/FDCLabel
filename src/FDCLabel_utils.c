@@ -1019,7 +1019,7 @@ int validate_json_config(cJSON *root) {
 void print_version() {
     printf("FDCLabel - Fast Dynamic C Label Generator\n");
     printf("Version 0.8.0\n");
-    printf("Copyright (C) IvanAegis\n");
+    printf("Copyright (C) Ivan Rolero\n");
     printf("License: GNU GPL v3\n");
 }
 
