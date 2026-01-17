@@ -1,6 +1,6 @@
 /* FDCLabel.c Fast Dynamic C Label Generator
  *
- * Copyright (C) IvanAegis
+ * Copyright (C) Ivan Rolero
  *
  * This file is part of FDCLabel.
  *
