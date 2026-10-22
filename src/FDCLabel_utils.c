@@ -439,9 +439,8 @@ void draw_text_in_box(HPDF_Page page, HPDF_Font font,
         words[wc++] = tok;
     words[wc] = NULL;
 
-
     float test_size = font_size;
-    int fits = 0;// lines_used = 0;
+    int fits = 0;
 
     while (!fits && test_size >= 6.0f) {
         HPDF_Page_SetFontAndSize(page, font, test_size);
@@ -451,6 +450,33 @@ void draw_text_in_box(HPDF_Page page, HPDF_Font font,
 
         for (int i = 0; i < wc; i++) {
             float word_width = HPDF_Page_TextWidth(page, words[i]);
+            
+            // If a single word exceeds box_width, estimate lines via character breaking
+            if (word_width > box_width) {
+                char temp_word[2048];
+                safe_strncpy(temp_word, words[i], sizeof(temp_word));
+                int len = strlen(temp_word);
+                float sub_width = 0.0f;
+                
+                if (line_width > 0) {
+                    lines++;
+                    line_width = 0.0f;
+                }
+                
+                for (int c = 0; c < len; c++) {
+                    char ch_str[2] = {temp_word[c], '\0'};
+                    float ch_width = HPDF_Page_TextWidth(page, ch_str);
+                    if (sub_width + ch_width > box_width) {
+                        lines++;
+                        sub_width = ch_width;
+                    } else {
+                        sub_width += ch_width;
+                    }
+                }
+                line_width = sub_width;
+                continue;
+            }
+
             float space_width = HPDF_Page_TextWidth(page, " ");
 
             if (line_width == 0)
@@ -465,7 +491,6 @@ void draw_text_in_box(HPDF_Page page, HPDF_Font font,
 
         if (lines * line_height <= box_height) {
             fits = 1;
-            //lines_used = lines;
         } else {
             test_size -= 1.0f;
         }
@@ -474,14 +499,62 @@ void draw_text_in_box(HPDF_Page page, HPDF_Font font,
     HPDF_Page_SetFontAndSize(page, font, test_size);
     const float line_height = test_size * 1.2f;
 
-
     HPDF_Page_BeginText(page);
-
-    //float total_height = lines_used * line_height;
     float y_cursor = y_end - padding - test_size; // top-down baseline
 
     char line[2048] = "";
+    
     for (int i = 0; i < wc; i++) {
+        float word_width = HPDF_Page_TextWidth(page, words[i]);
+        
+        // Handle words longer than box_width character-by-character
+        if (word_width > box_width) {
+            if (strlen(line) > 0) {
+                float lw = HPDF_Page_TextWidth(page, line);
+                float x_offset = x_start + padding;
+                if (align == 1) x_offset = x_start + (box_width - lw) / 2.0f + padding;
+                else if (align == 2) x_offset = x_end - lw - padding;
+
+                HPDF_Page_TextOut(page, x_offset, y_cursor, line);
+                y_cursor -= line_height;
+                line[0] = '\0';
+                if (y_cursor < y_start + padding) break;
+            }
+
+            int len = strlen(words[i]);
+            char sub_line[2048] = "";
+            for (int c = 0; c < len; c++) {
+                char candidate[2048];
+                snprintf(candidate, sizeof(candidate), "%s%c", sub_line, words[i][c]);
+                if (HPDF_Page_TextWidth(page, candidate) > box_width && strlen(sub_line) > 0) {
+                    float lw = HPDF_Page_TextWidth(page, sub_line);
+                    float x_offset = x_start + padding;
+                    if (align == 1) x_offset = x_start + (box_width - lw) / 2.0f + padding;
+                    else if (align == 2) x_offset = x_end - lw - padding;
+
+                    HPDF_Page_TextOut(page, x_offset, y_cursor, sub_line);
+                    y_cursor -= line_height;
+                    sub_line[0] = '\0';
+                    if (y_cursor < y_start + padding) break;
+                    
+                    snprintf(sub_line, sizeof(sub_line), "%c", words[i][c]);
+                } else {
+                    snprintf(sub_line, sizeof(sub_line), "%s", candidate);
+                }
+            }
+            if (strlen(sub_line) > 0 && y_cursor >= y_start + padding) {
+                float lw = HPDF_Page_TextWidth(page, sub_line);
+                float x_offset = x_start + padding;
+                if (align == 1) x_offset = x_start + (box_width - lw) / 2.0f + padding;
+                else if (align == 2) x_offset = x_end - lw - padding;
+
+                HPDF_Page_TextOut(page, x_offset, y_cursor, sub_line);
+                y_cursor -= line_height;
+                if (y_cursor < y_start + padding) break;
+            }
+            continue;
+        }
+
         char candidate[2048];
         snprintf(candidate, sizeof(candidate), "%s%s%s",
                  line, (strlen(line) > 0 ? " " : ""), words[i]);
@@ -489,14 +562,11 @@ void draw_text_in_box(HPDF_Page page, HPDF_Font font,
         float candidate_width = HPDF_Page_TextWidth(page, candidate);
 
         if (candidate_width > box_width && strlen(line) > 0) {
-            // Draw current line
             float lw = HPDF_Page_TextWidth(page, line);
             float x_offset = x_start + padding;
 
-            if (align == 1) // center
-                x_offset = x_start + (box_width - lw) / 2.0f + padding;
-            else if (align == 2) // right
-                x_offset = x_end - lw - padding;
+            if (align == 1) x_offset = x_start + (box_width - lw) / 2.0f + padding;
+            else if (align == 2) x_offset = x_end - lw - padding;
 
             HPDF_Page_TextOut(page, x_offset, y_cursor, line);
 
